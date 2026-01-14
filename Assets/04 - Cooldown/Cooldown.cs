@@ -18,11 +18,10 @@ public class Cooldown : MonoBehaviour
     private IEnumerator CooldownCoroutine()
     {
         float timer = 0;
-        
+
         while (timer < interval)
         {
             yield return null;
-
             timer += Time.deltaTime;
             cooldownBar.Progress = timer / interval;
         }
