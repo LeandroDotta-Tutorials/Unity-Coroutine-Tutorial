@@ -13,9 +13,9 @@ public class MultipleCoroutines : MonoBehaviour
         StartCoroutine(BounceCoroutine());
     }
     
-    private void OnDisable() 
+    private void OnDisable()
     {
-        StopAllCoroutines();    
+        StopAllCoroutines();
     }
 
     private IEnumerator ChangeColorCoroutine()
@@ -41,13 +41,13 @@ public class MultipleCoroutines : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(1f);
 
-            float newScale = Random.Range(1, 10);
+            float newScale = Random.Range(1f, 10f);
             transform.localScale = Vector3.one * newScale;
         }
     }
-    
+
     private IEnumerator BounceCoroutine()
     {
         while (true)
