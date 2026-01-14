@@ -24,7 +24,7 @@ public class HTTPRequestCoroutine : MonoBehaviour
 
         if (request.result == UnityWebRequest.Result.Success)
         {
-            var facts = JsonUtility.FromJson<CatFacts>(request.downloadHandler.text);
+            CatFacts facts = JsonUtility.FromJson<CatFacts>(request.downloadHandler.text);
             label.text = facts.data[0];
         }
         else
