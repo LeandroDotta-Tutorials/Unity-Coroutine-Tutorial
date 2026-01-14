@@ -8,7 +8,6 @@ public class Bomb : MonoBehaviour
     private void Start()
     {
         animator = GetComponent<Animator>();
-
         StartCoroutine(nameof(BombCoroutine));
     }
 
