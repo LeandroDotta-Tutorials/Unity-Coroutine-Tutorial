@@ -6,23 +6,40 @@ public class MultiCircleSpawner : MonoBehaviour
     public float interval = 1;
     public Sprite circleSprite;
 
-    private void Start()
-    {
-        
-
-        // InvokeRepeating(nameof(SpawnCircle), interval, interval);
-    }
-
+    #region Com Corrotina
     private void OnEnable()
     {
-        StartCoroutine("SpawnCircleCoroutine");
+        StartCoroutine(nameof(SpawnCircleCoroutine));
     }
 
     private void OnDisable()
     {
-        StopCoroutine("SpawnCircleCoroutine");
+        StopCoroutine(nameof(SpawnCircleCoroutine));
     }
 
+    private IEnumerator SpawnCircleCoroutine()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(interval);
+            Circle.Create(circleSprite);
+        }
+    }
+    #endregion
+
+    #region Com InvokeRepeating
+    // private void Start()
+    // {
+    //     InvokeRepeating(nameof(SpawnCircle), interval, interval);
+    // }
+
+    // private void SpawnCircle()
+    // {
+    //     Circle.Create(circleSprite);
+    // }
+    #endregion
+
+    #region Sem Corrotina
     // private float timer;
 
     // private void Update()
@@ -35,18 +52,5 @@ public class MultiCircleSpawner : MonoBehaviour
 
     //     timer += Time.deltaTime;
     // }
-
-    // private void SpawnCircle()
-    // {
-    //     Circle.Create(circleSprite);
-    // }
-
-    private IEnumerator SpawnCircleCoroutine()
-    {
-        while (true)
-        {
-            yield return new WaitForSeconds(interval);
-            Circle.Create(circleSprite);
-        }
-    }
+    #endregion
 }
